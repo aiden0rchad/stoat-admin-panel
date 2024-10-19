@@ -17,7 +17,7 @@ export function WindowTrigger({
       style={{
         alignItems: "center",
       }}
-      onClick={(e) => {
+      onDoubleClick={(e) => {
         e.stopPropagation();
         new window.WinBox(title, {
           url,
