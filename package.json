@@ -20,6 +20,7 @@
     "archiver-zip-encrypted": "^2.0.0",
     "babel-plugin-react-compiler": "^0.0.0-experimental-1f3db3d-20240818",
     "dayjs": "^1.11.10",
+    "dotenv": "^16.4.7",
     "eslint-plugin-react-compiler": "experimental",
     "lru-cache": "^10.2.0",
     "mongodb": "^6.3.0",
