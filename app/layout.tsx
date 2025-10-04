@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Revolt Admin Panel",
+  title: "Stoat Admin Panel",
   description: "Platform management and moderation tools.",
 };
 
