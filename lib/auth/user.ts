@@ -7,12 +7,9 @@ type AuthorisedUser = {
   usingNextAuth: boolean;
 };
 
-export function emailToImage(email: string) {
-  return email === "insert@revolt.chat"
-    ? "https://cdn.stoatusercontent.com/avatars/6rgg372gI2LrxCUx0CiA2R1Qs6eTtmC-2NpMq1Xa_3/e4332b6d70619b8a98086e532dbd4b9e.png"
-    : email === "tom@revolt.chat"
-      ? "https://cdn.stoatusercontent.com/avatars/gXhOXC82uHPk2EtWe0cvcE1Du7h1rjKFOhFcvqxKHp?max_side=256"
-      : "https://cdn.stoatusercontent.com/avatars/pYjK-QyMv92hy8GUM-b4IK1DMzYILys9s114khzzKY";
+export function emailToImage(_email: string) {
+  // Generic default avatar — no hardcoded user-specific images
+  return "";
 }
 
 /**

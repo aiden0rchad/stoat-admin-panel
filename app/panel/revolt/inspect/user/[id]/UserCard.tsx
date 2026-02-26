@@ -39,8 +39,8 @@ export function UserCard({
             size="3"
             src={
               user.avatar
-                ? `https://cdn.stoatusercontent.com//avatars/${user.avatar?._id}`
-                : `https://https://api.stoat.chat//users/${user._id}/default_avatar`
+                ? `/api/autumn/avatars/${user.avatar?._id}`
+                : `/api/users/${user._id}/default_avatar`
             }
             fallback={user.username.substring(0, 1)}
           />

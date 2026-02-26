@@ -6,6 +6,171 @@ html .radix-themes {
   --default-font-family: var(--font-inter);
 }
 
+/* ─── Discord-Inspired Dark Theme ─── */
+:root {
+  --stoat-bg-primary: #1e1f22;
+  --stoat-bg-secondary: #2b2d31;
+  --stoat-bg-tertiary: #232428;
+  --stoat-bg-sidebar: #1e1f22;
+  --stoat-accent: #5865f2;
+  --stoat-accent-hover: #4752c4;
+  --stoat-text-primary: #f2f3f5;
+  --stoat-text-secondary: #b5bac1;
+  --stoat-text-muted: #6d6f78;
+  --stoat-border: rgba(255, 255, 255, 0.06);
+  --stoat-card-hover: rgba(255, 255, 255, 0.03);
+}
+
+body {
+  background-color: var(--stoat-bg-primary) !important;
+}
+
+/* ─── Sidebar ─── */
+.sidebar-container {
+  background: var(--stoat-bg-sidebar);
+  border-right: 1px solid var(--stoat-border);
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--stoat-text-muted) !important;
+  font-weight: 700 !important;
+  padding-left: 8px;
+  margin-top: 4px;
+}
+
+.sidebar-nav-btn {
+  transition: all 0.15s ease !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-weight: 500 !important;
+}
+
+.sidebar-nav-btn:hover {
+  background: rgba(88, 101, 242, 0.12) !important;
+  color: var(--stoat-text-primary) !important;
+}
+
+.sidebar-footer-text {
+  font-size: 11px;
+  color: var(--stoat-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Dashboard Stats ─── */
+.stat-card {
+  background: var(--stoat-bg-secondary) !important;
+  border: 1px solid var(--stoat-border) !important;
+  transition: all 0.2s ease !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+}
+
+.stat-card:hover {
+  border-color: rgba(88, 101, 242, 0.3) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.stat-value {
+  color: var(--stoat-text-primary) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Hover Cards ─── */
+.hover-card {
+  transition: all 0.15s ease !important;
+  background: var(--stoat-bg-secondary) !important;
+  border: 1px solid var(--stoat-border) !important;
+}
+
+.hover-card:hover {
+  background: var(--stoat-card-hover) !important;
+  border-color: rgba(88, 101, 242, 0.2) !important;
+}
+
+/* ─── Login Page ─── */
+.login-card {
+  padding: 32px !important;
+  background: var(--stoat-bg-secondary) !important;
+  border: 1px solid var(--stoat-border) !important;
+  border-radius: 16px !important;
+  min-width: 360px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.login-heading {
+  background: linear-gradient(135deg, #5865f2, #7c8af7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Search Results ─── */
+.rt-Card a {
+  text-decoration: none;
+}
+
+/* ─── Responsive Stats Grid ─── */
+@media (max-width: 768px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Links ─── */
+a {
+  color: var(--stoat-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--stoat-accent-hover);
+  text-decoration: underline;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(88, 101, 242, 0.3);
+}
+
+/* ─── Hover Button Helper ─── */
 .hover-btn .btn {
   display: none;
 }
@@ -14,6 +179,7 @@ html .radix-themes {
   display: block;
 }
 
+/* ─── Tooltip (balloon) ─── */
 :root {
   --balloon-border-radius: 4px;
   --balloon-color: rgba(30, 30, 30, 0.95);
@@ -30,27 +196,22 @@ button[aria-label][data-balloon-pos] {
   position: relative;
   cursor: pointer;
 }
+
 [aria-label][data-balloon-pos]:after {
   opacity: 0;
   pointer-events: none;
   transition: all 0.18s ease-out 0.18s;
-  text-indent: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: normal;
-  font-style: normal;
-  text-shadow: none;
   font-size: var(--balloon-font-size);
   background: var(--balloon-color);
-  border-radius: 2px;
-  color: var(--balloon-text-color);
   border-radius: var(--balloon-border-radius);
+  color: var(--balloon-text-color);
   content: attr(aria-label);
   padding: 0.5em 1em;
   position: absolute;
   white-space: nowrap;
   z-index: 10;
 }
+
 [aria-label][data-balloon-pos]:before {
   width: 0;
   height: 0;
@@ -63,171 +224,9 @@ button[aria-label][data-balloon-pos] {
   position: absolute;
   z-index: 10;
 }
+
 [aria-label][data-balloon-pos]:hover:before,
-[aria-label][data-balloon-pos]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-visible]:before,
-[aria-label][data-balloon-pos][data-balloon-visible]:after,
-[aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:before,
-[aria-label][data-balloon-pos]:not([data-balloon-nofocus]):focus:after {
+[aria-label][data-balloon-pos]:hover:after {
   opacity: 1;
   pointer-events: none;
-}
-[aria-label][data-balloon-pos].font-awesome:after {
-  font-family:
-    FontAwesome,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
-}
-[aria-label][data-balloon-pos][data-balloon-break]:after {
-  white-space: pre;
-}
-[aria-label][data-balloon-pos][data-balloon-break][data-balloon-length]:after {
-  white-space: pre-line;
-  word-break: break-word;
-}
-[aria-label][data-balloon-pos][data-balloon-blunt]:before,
-[aria-label][data-balloon-pos][data-balloon-blunt]:after {
-  transition: none;
-}
-[aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:after,
-[aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:after {
-  transform: translate(-50%, 0);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="up"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos="up"][data-balloon-visible]:before,
-[aria-label][data-balloon-pos][data-balloon-pos="down"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos="down"][data-balloon-visible]:before {
-  transform: translate(-50%, 0);
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"]:after {
-  left: 0;
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"]:before {
-  left: 5px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"]:after {
-  right: 0;
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"]:before {
-  right: 5px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:after,
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:after {
-  transform: translate(0, 0);
-}
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos*="-left"][data-balloon-visible]:before,
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos*="-right"][data-balloon-visible]:before {
-  transform: translate(0, 0);
-}
-[aria-label][data-balloon-pos][data-balloon-pos^="up"]:before,
-[aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-  bottom: 100%;
-  transform-origin: top;
-  transform: translate(0, var(--balloon-move));
-}
-[aria-label][data-balloon-pos][data-balloon-pos^="up"]:after {
-  margin-bottom: 10px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos="up"]:before,
-[aria-label][data-balloon-pos][data-balloon-pos="up"]:after {
-  left: 50%;
-  transform: translate(-50%, var(--balloon-move));
-}
-[aria-label][data-balloon-pos][data-balloon-pos^="down"]:before,
-[aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-  top: 100%;
-  transform: translate(0, calc(var(--balloon-move) * -1));
-}
-[aria-label][data-balloon-pos][data-balloon-pos^="down"]:after {
-  margin-top: 10px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos^="down"]:before {
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-bottom-color: var(--balloon-color);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="down"]:after,
-[aria-label][data-balloon-pos][data-balloon-pos="down"]:before {
-  left: 50%;
-  transform: translate(-50%, calc(var(--balloon-move) * -1));
-}
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:after,
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:after,
-[aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:after {
-  transform: translate(0, -50%);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos="left"][data-balloon-visible]:before,
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:hover:before,
-[aria-label][data-balloon-pos][data-balloon-pos="right"][data-balloon-visible]:before {
-  transform: translate(0, -50%);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:after,
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-  right: 100%;
-  top: 50%;
-  transform: translate(var(--balloon-move), -50%);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:after {
-  margin-right: 10px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos="left"]:before {
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-left-color: var(--balloon-color);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:after,
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-  left: 100%;
-  top: 50%;
-  transform: translate(calc(var(--balloon-move) * -1), -50%);
-}
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:after {
-  margin-left: 10px;
-}
-[aria-label][data-balloon-pos][data-balloon-pos="right"]:before {
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-right-color: var(--balloon-color);
-}
-[aria-label][data-balloon-pos][data-balloon-length]:after {
-  white-space: normal;
-}
-[aria-label][data-balloon-pos][data-balloon-length="small"]:after {
-  width: 80px;
-}
-[aria-label][data-balloon-pos][data-balloon-length="medium"]:after {
-  width: 150px;
-}
-[aria-label][data-balloon-pos][data-balloon-length="large"]:after {
-  width: 260px;
-}
-[aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-  width: 380px;
-}
-@media screen and (max-width: 768px) {
-  [aria-label][data-balloon-pos][data-balloon-length="xlarge"]:after {
-    width: 90vw;
-  }
-}
-[aria-label][data-balloon-pos][data-balloon-length="fit"]:after {
-  width: 100%;
 }

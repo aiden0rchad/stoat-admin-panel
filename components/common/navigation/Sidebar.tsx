@@ -5,19 +5,10 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import {
-  BackpackIcon,
-  ExclamationTriangleIcon,
-  GlobeIcon,
-  GroupIcon,
   HomeIcon,
-  IdCardIcon,
-  InfoCircledIcon,
-  Link1Icon,
   MagnifyingGlassIcon,
-  PersonIcon,
-  ReaderIcon,
 } from "@radix-ui/react-icons";
-import { Badge, Button, Flex, Heading } from "@radix-ui/themes";
+import { Button, Flex, Heading, Separator } from "@radix-ui/themes";
 
 import { AuthorisedUserCard } from "./AuthorisedUserCard";
 
@@ -37,162 +28,62 @@ export function Sidebar({
   if (params.has("hideNav")) return null;
 
   return (
-    <div className="relative">
-      <Flex gap="2" direction="column" className="w-[280px]">
-        <Image
-          src="/wide.svg"
-          width={240}
-          height={32}
-          className="m-4"
-          alt="Logo"
-        />
+    <div className="sidebar-container">
+      <Flex gap="2" direction="column" className="w-[260px] p-3">
+        <Flex align="center" gap="2" className="px-2 py-3">
+          <Image
+            src="/wide.svg"
+            width={200}
+            height={28}
+            alt="Stoat Admin"
+          />
+        </Flex>
+
         <AuthorisedUserCard />
 
+        <Separator size="4" className="my-1 opacity-20" />
+
+        <Heading size="1" className="sidebar-section-label">
+          Navigation
+        </Heading>
+
         <Button
-          variant={pathname === "/panel" ? "solid" : "surface"}
-          className="!justify-start"
+          variant={pathname === "/panel" ? "solid" : "ghost"}
+          className="sidebar-nav-btn !justify-start"
           asChild
         >
           <Link href="/panel">
-            <HomeIcon /> Home
+            <HomeIcon /> Dashboard
           </Link>
         </Button>
-        {/* <Button
-          variant={pathname === "/panel/profile" ? "solid" : "surface"}
-          className="!justify-start"
+
+        <Separator size="4" className="my-1 opacity-20" />
+
+        <Heading size="1" className="sidebar-section-label">
+          Tools
+        </Heading>
+
+        <Button
+          variant={
+            pathname === "/panel/revolt/inspect" ? "solid" : "ghost"
+          }
+          className="sidebar-nav-btn !justify-start"
           asChild
         >
-          <Link href="/panel">
-            <IdCardIcon /> My Profile
+          <Link href="/panel/revolt/inspect">
+            <MagnifyingGlassIcon />
+            Search & Inspect
           </Link>
-        </Button> -- WIP */}
+        </Button>
 
-        {modules.hr && (
-          <>
-            <Heading size="2" color="gray" className="pt-4">
-              Human Resources
-            </Heading>
-            <Button
-              variant={pathname === "/panel/hr/team" ? "solid" : "surface"}
-              className="!justify-start"
-              asChild
-            >
-              <Link href="/panel/hr/team">
-                <PersonIcon />
-                Team Members
-              </Link>
-            </Button>
-            {/* <Button
-              variant={pathname === "/panel/hr/positions" ? "solid" : "surface"}
-              className="!justify-start"
-              asChild
-            >
-              <Link href="/panel/hr/positions">
-                <BackpackIcon />
-                Positions
-              </Link>
-            </Button>
-            <Button
-              variant={pathname === "/panel/hr/rbac" ? "solid" : "surface"}
-              className="!justify-start"
-              asChild
-            >
-              <Link href="/panel/hr/rbac">
-                <GroupIcon />
-                Roles & Permissions
-              </Link>
-            </Button> -- WIP */}
-            {/* <Button
-          variant={pathname === "/panel/hr/integrations" ? "solid" : "surface"}
-          className="!justify-start"
-          asChild
-        >
-          <Link href="/panel/hr/integrations">
-            <Link1Icon />
-            Integration Settings
-          </Link>
-        </Button> */}
-          </>
-        )}
-
-        {(modules.modAgent || modules.discoverAgent) && (
-          <>
-            <Heading size="2" color="gray" className="pt-4">
-              Content Moderation
-            </Heading>
-            {modules.advancedPanel && (
-              <Button
-                variant={pathname === "/panel/mod/legacy" ? "solid" : "surface"}
-                className="!justify-start"
-                asChild
-              >
-                <Link href="/panel/mod/legacy">
-                  <InfoCircledIcon /> Overview
-                </Link>
-              </Button>
-            )}
-            <Button
-              variant={
-                pathname === "/panel/revolt/inspect" ? "solid" : "surface"
-              }
-              className="!justify-start"
-              asChild
-            >
-              <Link href="/panel/revolt/inspect">
-                <MagnifyingGlassIcon />
-                Search by ID <Badge color="orange">🚧 WIP</Badge>
-              </Link>
-            </Button>
-            {modules.advancedPanel && (
-              <>
-                <Button
-                  variant={
-                    pathname === "/panel/mod/legacy/create-report"
-                      ? "solid"
-                      : "surface"
-                  }
-                  className="!justify-start"
-                  asChild
-                >
-                  <Link href="/panel/mod/legacy/create-report">
-                    <ExclamationTriangleIcon /> Create Report
-                  </Link>
-                </Button>
-                {modules.modAgent && (
-                  <Button
-                    variant={
-                      pathname === "/panel/mod/legacy/reports"
-                        ? "solid"
-                        : "surface"
-                    }
-                    className="!justify-start"
-                    asChild
-                  >
-                    <Link href="/panel/mod/legacy/reports">
-                      <ReaderIcon /> Reports & Cases
-                    </Link>
-                  </Button>
-                )}
-                {modules.discoverAgent && (
-                  <Button
-                    variant={
-                      pathname === "/panel/mod/legacy/discover"
-                        ? "solid"
-                        : "surface"
-                    }
-                    className="!justify-start"
-                    asChild
-                  >
-                    <Link href="/panel/mod/legacy/discover">
-                      <GlobeIcon />
-                      Discover
-                    </Link>
-                  </Button>
-                )}
-              </>
-            )}
-          </>
-        )}
+        <div className="mt-auto pt-4 px-2">
+          <Flex direction="column" gap="1">
+            <Separator size="4" className="mb-2 opacity-10" />
+            <span className="sidebar-footer-text">
+              Stoat Admin Panel
+            </span>
+          </Flex>
+        </div>
       </Flex>
     </div>
   );
